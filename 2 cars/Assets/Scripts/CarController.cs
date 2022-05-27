@@ -6,33 +6,30 @@ public class CarController : MonoBehaviour
     #region Variables
     [Range(0, 100)] public float touchRangeMin; 
     [Range(0, 100)] public float touchRangeMax;
-
-    bool shouldSwitchLane;
-    int currLane;
-    List<Vector2> lanePositions;
-    float worldToScreenMultiplier;
-    float percentToWorldMultiplier;
-
     public float rotateAngle = 15f;
     public float lerpDuration = .2f;
+
+    public List<float> laneXPositions;
+
     float lerpRatio;
     Vector2 lerpStartPos;
     Vector2 lerpTarget;
+    bool shouldSwitchLane;
+    int currLane;
+    float worldToScreenMultiplier;
+    float percentToWorldMultiplier;
     #endregion
 
     void Awake()
     {
-        print(Camera.main.orthographicSize);
         shouldSwitchLane = false;
         currLane = 0;
         worldToScreenMultiplier = Screen.width / 100;
         percentToWorldMultiplier = Camera.main.orthographicSize / 100;
         float touchWidth = touchRangeMax - touchRangeMin;
         float leftLaneX = (touchRangeMin + touchWidth / 4) * percentToWorldMultiplier;
-        Vector2 leftLanePos = new Vector2(leftLaneX, transform.position.y);
         float rightLaneX = (touchRangeMax - touchWidth / 4) * percentToWorldMultiplier;
-        Vector2 rightLanePos = new Vector2(rightLaneX, transform.position.y);
-        lanePositions = new List<Vector2>{leftLanePos, rightLanePos};        
+        laneXPositions = new List<float>{leftLaneX, rightLaneX};
     }
     
     void Start() {
@@ -59,11 +56,13 @@ public class CarController : MonoBehaviour
         }
     }
 
+    // TODO: handle collisions with obstacles and collectibles
+
     void SwitchLane() {
         int dstLane = 1 - currLane;
-        Vector2 dstPos = lanePositions[dstLane];
         CancelInvoke();
         RotateCar(dstLane);
+        Vector2 dstPos = new Vector2(laneXPositions[dstLane], transform.position.y);
         SetDestination(dstPos);
         currLane = dstLane;
         Invoke(nameof(ResetCarRotate), lerpDuration);
