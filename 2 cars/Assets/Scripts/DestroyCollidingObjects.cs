@@ -18,7 +18,7 @@ public class DestroyCollidingObjects : MonoBehaviour
         whitelistNotEmpty = gameTagWhitelist.Count > 0;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (whitelistNotEmpty && gameTagWhitelist.Contains(other.tag) || !whitelistNotEmpty) {
             Destroy(other.gameObject);
         }

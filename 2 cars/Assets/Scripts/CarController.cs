@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(DetectAndEnd))]
 public class CarController : MonoBehaviour
 {
     #region Variables
@@ -9,6 +10,7 @@ public class CarController : MonoBehaviour
     public float rotateAngle = 15f;
     public float lerpDuration = .2f;
 
+    [System.NonSerialized]
     public List<float> laneXPositions;
 
     float lerpRatio;
@@ -56,7 +58,14 @@ public class CarController : MonoBehaviour
         }
     }
 
-    // TODO: handle collisions with obstacles and collectibles
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag(Consts.CollectibleTag)) {
+            Destroy(other.gameObject);
+            GameScore.CurrentGameScore += 1;
+            // TODO: play sound
+        }
+    }
+    
 
     void SwitchLane() {
         int dstLane = 1 - currLane;
