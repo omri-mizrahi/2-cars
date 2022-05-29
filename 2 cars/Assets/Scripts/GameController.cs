@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [RequireComponent(typeof(GameSpeed), typeof(AudioSource))]
 public class GameController : MonoBehaviour
@@ -11,6 +13,8 @@ public class GameController : MonoBehaviour
     
     GameSpeed gameSpeed;
     AudioSource audioSource;
+
+    private delegate void Action();
     #endregion
 
     void Awake() {
@@ -52,7 +56,7 @@ public class GameController : MonoBehaviour
     }
 
     void ResetGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public static bool IsPlaying => CurrGameMode == GameMode.Playing;
