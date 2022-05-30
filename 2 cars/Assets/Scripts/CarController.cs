@@ -20,6 +20,7 @@ public class CarController : MonoBehaviour
     int currLane;
     float worldToScreenMultiplier;
     float percentToWorldMultiplier;
+    bool moving;
     #endregion
 
     void Awake()
@@ -48,7 +49,9 @@ public class CarController : MonoBehaviour
             }
         }
         lerpRatio += Time.deltaTime / lerpDuration;
-        transform.position = Vector2.Lerp(lerpStartPos, lerpTarget, lerpRatio);
+        if (moving) {
+            transform.position = Vector2.Lerp(lerpStartPos, lerpTarget, lerpRatio);
+        }
     }
 
     void FixedUpdate() {
@@ -74,12 +77,13 @@ public class CarController : MonoBehaviour
         Vector2 dstPos = new Vector2(laneXPositions[dstLane], transform.position.y);
         SetDestination(dstPos);
         currLane = dstLane;
-        Invoke(nameof(ResetCarRotate), lerpDuration);
+        Invoke(nameof(StopMoving), lerpDuration);
     }
 
 
     void SetDestination(Vector2 destination)
      {
+        moving = true;
         lerpRatio = 0;
         lerpStartPos = transform.position;
         lerpTarget = destination;
@@ -90,7 +94,8 @@ public class CarController : MonoBehaviour
          transform.Rotate(Vector3.forward, rotateAngle * angleMultiplier);
      }
 
-     void ResetCarRotate() {
+     void StopMoving() {
          transform.rotation = Quaternion.identity;
+         moving = false;
      }
 }
