@@ -9,16 +9,10 @@ public class GameController : MonoBehaviour
     #region Variables
     public enum GameMode {Pregame, Playing, Gameover};
     public static GameMode CurrGameMode;
-    public AudioClip ingameMusic;
-    
     GameSpeed gameSpeed;
-    AudioSource audioSource;
-
-    private delegate void Action();
     #endregion
 
     void Awake() {
-        audioSource = GetComponent<AudioSource>();
         gameSpeed = GetComponent<GameSpeed>();
     }
 
@@ -47,10 +41,6 @@ public class GameController : MonoBehaviour
     void StartGame() {
         GameSpeed.CurrentGameSpeed = gameSpeed.startingSpeed;
         CurrGameMode = GameMode.Playing;
-        if (ingameMusic) {
-            audioSource.clip = ingameMusic;
-            audioSource.Play();
-        }
     }
     
     public static void EndGame() {

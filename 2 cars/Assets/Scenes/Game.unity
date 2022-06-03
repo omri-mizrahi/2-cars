@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 213695304}
   - component: {fileID: 213695303}
   - component: {fileID: 213695302}
-  - component: {fileID: 213695301}
   - component: {fileID: 213695306}
   m_Layer: 0
   m_Name: GameManager
@@ -218,18 +217,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &213695301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213695300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18fadef71b0951498412cf043c85b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &213695302
 AudioSource:
   m_ObjectHideFlags: 0
@@ -338,7 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc110400f8678e438bae365e0004ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameMusic: {fileID: 0}
 --- !u!114 &213695304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectSound: {fileID: 8300000, guid: 9b7f16ee37487194ab5fb85441066887, type: 3}
   ObstacleSound: {fileID: 8300000, guid: 6852fcf105e2d0c44be2888a22cc1424, type: 3}
+  BackgroundMusic: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +901,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1189542367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189542369}
+  - component: {fileID: 1189542368}
+  m_Layer: 0
+  m_Name: GameScore
+  m_TagString: GameScore
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1189542368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189542367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18fadef71b0951498412cf043c85b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1189542369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189542367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259400295
 GameObject:
   m_ObjectHideFlags: 0
