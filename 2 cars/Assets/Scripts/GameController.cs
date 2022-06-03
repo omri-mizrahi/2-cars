@@ -39,6 +39,9 @@ public class GameController : MonoBehaviour
                     break;
             }
         }
+        if (CurrGameMode == GameMode.Gameover) {
+            Invoke(nameof(ResetGame), 1.5f);
+        }
     }
 
     void StartGame() {

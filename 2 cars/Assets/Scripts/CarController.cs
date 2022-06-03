@@ -36,7 +36,9 @@ public class CarController : MonoBehaviour
     }
     
     void Start() {
+        transform.position = new Vector2(laneXPositions[0], transform.position.y);
         lerpStartPos = lerpTarget = transform.position;
+        Debug.Log($"{gameObject.name}'s position is: ${lerpStartPos}");
     }
 
     void Update()
@@ -65,7 +67,7 @@ public class CarController : MonoBehaviour
         if (other.CompareTag(Consts.CollectibleTag)) {
             Destroy(other.gameObject);
             GameScore.CurrentGameScore += 1;
-            // TODO: play sound
+            SoundController.PlayCollectSound();
         }
     }
     

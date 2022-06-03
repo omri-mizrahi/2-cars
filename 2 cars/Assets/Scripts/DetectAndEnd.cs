@@ -19,6 +19,7 @@ public class DetectAndEnd : MonoBehaviour
         if (other.CompareTag(detectTag) && !detected) {
             detected = true;
             GameController.EndGame();
+            SoundController.PlayObstacleSound();
             detectedObj = other.gameObject;
             InvokeRepeating(nameof(Blink), 0, repeatRate);
         }
