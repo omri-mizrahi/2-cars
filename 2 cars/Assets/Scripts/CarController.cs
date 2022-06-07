@@ -38,7 +38,7 @@ public class CarController : MonoBehaviour
     void Start() {
         transform.position = new Vector2(laneXPositions[0], transform.position.y);
         lerpStartPos = lerpTarget = transform.position;
-        Debug.Log($"{gameObject.name}'s position is: ${lerpStartPos}");
+        Debug.Log($"{gameObject.name}'s position is: {lerpStartPos}. right lane: {laneXPositions[1]}");
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class CarController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag(Consts.CollectibleTag)) {
+        if (other.CompareTag(Consts.Tags.Collectible)) {
             Destroy(other.gameObject);
             GameScore.CurrentGameScore += 1;
             SoundController.PlayCollectSound();

@@ -29,12 +29,12 @@ public class GameController : MonoBehaviour
                     StartGame();
                     break;
                 case GameMode.Gameover:
-                    ResetGame();
+                    GameOverMenu();
                     break;
             }
         }
         if (CurrGameMode == GameMode.Gameover) {
-            Invoke(nameof(ResetGame), 1.5f);
+            Invoke(nameof(GameOverMenu), 1.5f);
         }
     }
 
@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour
         CurrGameMode = GameMode.Gameover;
     }
 
-    void ResetGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    void GameOverMenu() {
+        SceneManager.LoadScene(Consts.Scenes.GameOverMenu);
     }
 
     public static bool IsPlaying => CurrGameMode == GameMode.Playing;

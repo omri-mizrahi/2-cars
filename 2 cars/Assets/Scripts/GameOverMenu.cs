@@ -7,6 +7,11 @@ public class GameOverMenu : MonoBehaviour
     #endregion
 
     public void Retry() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameScore.CurrentGameScore = 0;
+        SceneManager.LoadScene(GameMode.CurrentGameMode);
+    }
+
+    public void BackToStart() {
+        SceneManager.LoadScene(Consts.Scenes.StartMenu);
     }
 }

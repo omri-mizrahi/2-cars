@@ -6,15 +6,18 @@ public class Highscore : MonoBehaviour
     #region Variables
     TextMeshProUGUI scoreText;
     int highscore;
+    string highscoreKeyword;
     #endregion
 
     void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        highscore = PlayerPrefs.GetInt(Consts.HighscorePlayerPref, 0);
+        highscoreKeyword = GameMode.CurrentGameMode + Consts.PlayerPrefs.Highscore;
+
+        highscore = PlayerPrefs.GetInt(highscoreKeyword, 0);
         if (GameScore.CurrentGameScore > highscore) {
             highscore = GameScore.CurrentGameScore;
-            PlayerPrefs.SetInt(Consts.HighscorePlayerPref, highscore);
+            PlayerPrefs.SetInt(highscoreKeyword, highscore);
         }
         scoreText.text = highscore.ToString();
     }

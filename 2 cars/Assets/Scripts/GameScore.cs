@@ -10,7 +10,7 @@ public class GameScore : MonoBehaviour
     {
         CurrentGameScore = 0;
 
-        GameObject[] prevScoreObjs = GameObject.FindGameObjectsWithTag(Consts.GameScoreTag);
+        GameObject[] prevScoreObjs = GameObject.FindGameObjectsWithTag(Consts.Tags.GameScore);
         if (prevScoreObjs.Length > 1) {
             Destroy(gameObject);
         }
