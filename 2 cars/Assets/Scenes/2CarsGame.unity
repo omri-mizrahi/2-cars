@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingSpeed: 4
-  accelerationOverTime: 0.1
+  accelerationOverTime: 0.08
 --- !u!4 &213695305
 Transform:
   m_ObjectHideFlags: 0

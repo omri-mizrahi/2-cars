@@ -4,10 +4,17 @@ public class GameSpeed : MonoBehaviour
 {
     #region Variables
     public static float CurrentGameSpeed;
-    public float startingSpeed = 20f;
-    [Tooltip("Increase the game speed every second by this value")]
-    public float accelerationOverTime = 1f;
+    public float StartingSpeed = 20f;
+    float accelerationOverTime = 1f;
     #endregion
+
+    void Awake() {
+        var defaultValues = Consts.DefaultSettings[GameMode.CurrentGameMode];
+        StartingSpeed = PlayerPrefs.GetFloat(GameMode.CurrentGameMode + Consts.Settings.StartingSpeed, 
+                                                defaultValues[Consts.Settings.StartingSpeed]);
+        accelerationOverTime = PlayerPrefs.GetFloat(GameMode.CurrentGameMode + Consts.Settings.GameAcceleration, 
+                                                defaultValues[Consts.Settings.GameAcceleration]);
+    }
 
     void Update() {
         if (GameController.IsPlaying) {

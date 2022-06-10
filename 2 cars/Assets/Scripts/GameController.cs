@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     }
 
     void StartGame() {
-        GameSpeed.CurrentGameSpeed = gameSpeed.startingSpeed;
+        GameSpeed.CurrentGameSpeed = gameSpeed.StartingSpeed;
         CurrGameMode = GameMode.Playing;
     }
     

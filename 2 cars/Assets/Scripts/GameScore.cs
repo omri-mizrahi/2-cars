@@ -9,12 +9,5 @@ public class GameScore : MonoBehaviour
     void Awake()
     {
         CurrentGameScore = 0;
-
-        GameObject[] prevScoreObjs = GameObject.FindGameObjectsWithTag(Consts.Tags.GameScore);
-        if (prevScoreObjs.Length > 1) {
-            Destroy(gameObject);
-        }
-        
-        DontDestroyOnLoad(this);
     }
 }
