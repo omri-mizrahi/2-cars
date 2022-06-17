@@ -9,7 +9,7 @@ public class SpawnersManager : MonoBehaviour
     #endregion
 
     void Awake() {
-        var defaultValues = Consts.DefaultSettings[GameMode.CurrentGameMode];
+        var defaultValues = Config.DefaultSettings[GameMode.CurrentGameMode];
         StartSpawnRate = PlayerPrefs.GetFloat(GameMode.CurrentGameMode + Consts.Settings.StartSpawnRate, 
                                                 defaultValues[Consts.Settings.StartSpawnRate]);
         AccelerationOverTime = PlayerPrefs.GetFloat(GameMode.CurrentGameMode + Consts.Settings.SpawnAcceleration, 
