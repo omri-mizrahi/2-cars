@@ -7,13 +7,23 @@ public class Move : MonoBehaviour
     public float speed = 20f;
     public Vector3 direction = Vector3.down;
     public bool onlyOnGamePlaying = true;
+    
+    Rigidbody2D rb;
     #endregion
 
+    void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start() {
+        speed = useGameSpeed ? GameSpeed.CurrentGameSpeed : speed;
+    }
+
+    void Update() {
+        speed = useGameSpeed ? GameSpeed.CurrentGameSpeed : speed;
+    }
 
     void FixedUpdate() {
-        if ((onlyOnGamePlaying && GameController.IsPlaying) || !onlyOnGamePlaying) {
-            speed = useGameSpeed ? GameSpeed.CurrentGameSpeed : speed;
-            transform.Translate(direction * (Time.fixedDeltaTime * speed), Space.World);
-        }
+        rb.velocity = direction * speed;
     }
 }

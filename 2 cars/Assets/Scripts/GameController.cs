@@ -28,9 +28,9 @@ public class GameController : MonoBehaviour
                 case GameMode.Pregame:
                     StartGame();
                     break;
-                case GameMode.Gameover:
-                    GameOverMenu();
-                    break;
+                // case GameMode.Gameover:
+                //     GameOverMenu();
+                //     break;
             }
         }
         if (CurrGameMode == GameMode.Gameover) {
