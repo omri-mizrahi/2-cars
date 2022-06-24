@@ -18,8 +18,9 @@ public class CarController : MonoBehaviour
     Vector2 lerpTarget;
     bool shouldSwitchLane;
     int currLane;
-    float worldToScreenMultiplier;
-    float percentToWorldMultiplier;
+    float touchRangeMinPixel;
+    float touchRangeMaxPixel;
+    float touchMaxHeight;
     bool moving;
     #endregion
 
@@ -27,8 +28,12 @@ public class CarController : MonoBehaviour
     {
         shouldSwitchLane = false;
         currLane = 0;
-        worldToScreenMultiplier = Screen.width / 100;
-        percentToWorldMultiplier = Camera.main.orthographicSize / 100;
+        float worldToScreenMultiplier = Screen.width / 100;
+        touchRangeMaxPixel = touchRangeMax * worldToScreenMultiplier;
+        touchRangeMinPixel = touchRangeMin * worldToScreenMultiplier;
+        touchMaxHeight = 0.8f * Screen.height;  // 80% of the screen
+
+        float percentToWorldMultiplier = Camera.main.orthographicSize / 100;
         float touchWidth = touchRangeMax - touchRangeMin;
         float leftLaneX = (touchRangeMin + touchWidth / 4) * percentToWorldMultiplier;
         float rightLaneX = (touchRangeMax - touchWidth / 4) * percentToWorldMultiplier;
@@ -45,8 +50,9 @@ public class CarController : MonoBehaviour
     {
         foreach (Touch touch in Input.touches) {
             float touchPosX = touch.position.x;
-            if (touch.phase == TouchPhase.Began &&
-                touchPosX >= touchRangeMin * worldToScreenMultiplier && touchPosX <= touchRangeMax * worldToScreenMultiplier) {
+            if (touch.phase == TouchPhase.Began && 
+                touch.position.y <= touchMaxHeight &&
+                touchPosX >= touchRangeMinPixel && touchPosX <= touchRangeMaxPixel) {
                 shouldSwitchLane = true;
             }
         }

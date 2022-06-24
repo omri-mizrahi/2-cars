@@ -6,13 +6,13 @@ public class DetectAndEnd : MonoBehaviour
     public float repeatRate = .5f;
     public string detectTag = "Obstacle";
     
-    GameObject detectedObj;
+    Renderer detectedObjRndr;
     bool detected = false;
     #endregion
 
 
     void Blink() {
-        detectedObj.SetActive(!detectedObj.activeInHierarchy);
+        detectedObjRndr.enabled = !detectedObjRndr.enabled;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -20,7 +20,7 @@ public class DetectAndEnd : MonoBehaviour
             detected = true;
             GameController.EndGame();
             SoundController.PlayObstacleSound();
-            detectedObj = other.gameObject;
+            detectedObjRndr = other.gameObject.GetComponent<Renderer>();
             InvokeRepeating(nameof(Blink), 0, repeatRate);
         }
     }
