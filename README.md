@@ -8,7 +8,8 @@ After learning the basics of Unity, I thought I would learn a lot by building a 
 If you are an experienced Unity developer, or C# developer I would be very glad to recieve comments and review about my project and code. Help me learn :)
 
 ## Demo
-![demo](https://github.com/omri-mizrahi/2-cars/blob/main/2%20cars/Demos/screen_video_demo.gif)
+<!-- ![demo](https://github.com/omri-mizrahi/2-cars/blob/main/2%20cars/Demos/screen_video_demo.gif) -->
+<img src="https://github.com/omri-mizrahi/2-cars/blob/main/2%20cars/Demos/screen_video_demo.gif" width="30%" height="30%"/>
 
 ## Credits
 Credit for all sprites (I used only the sprites, all code written by me.) - Baturalp Gürdin, Unity Asset Store
